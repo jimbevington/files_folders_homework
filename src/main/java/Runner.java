@@ -23,5 +23,7 @@ public class Runner {
         file1.setName("dried-donuts");
         DBHelper.update(file1);
 
+        DBHelper.delete(file1);
+
     }
 }
