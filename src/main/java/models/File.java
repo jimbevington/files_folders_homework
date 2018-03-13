@@ -2,6 +2,7 @@ package models;
 
 public class File {
 
+    private int id;
     private String name;
     private String extension;
     private int size;
@@ -15,6 +16,14 @@ public class File {
         this.extension = extension;
         this.size = size;
         this.folder = folder;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
