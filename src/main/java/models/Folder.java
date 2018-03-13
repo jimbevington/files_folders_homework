@@ -15,8 +15,9 @@ public class Folder {
     public Folder() {
     }
 
-    public Folder(String name) {
+    public Folder(String name, Owner owner) {
         this.name = name;
+        this.owner = owner;
     }
 
     @Id
@@ -39,7 +40,7 @@ public class Folder {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "folder", fetch = FetchType.EAGER)
     public Set<File> getFiles() {
         return files;
     }
