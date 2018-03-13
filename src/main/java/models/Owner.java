@@ -1,8 +1,10 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Set;
 
-
+@Entity
+@Table(name="owners")
 public class Owner {
 
     private int id;
@@ -18,6 +20,9 @@ public class Owner {
         this.username = username;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -26,6 +31,7 @@ public class Owner {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -34,6 +40,7 @@ public class Owner {
         this.name = name;
     }
 
+    @Column(name="username")
     public String getUsername() {
         return username;
     }
@@ -42,6 +49,7 @@ public class Owner {
         this.username = username;
     }
 
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     public Set<Folder> getFolders() {
         return folders;
     }

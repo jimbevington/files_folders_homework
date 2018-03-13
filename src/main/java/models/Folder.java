@@ -48,7 +48,8 @@ public class Folder {
         this.files = files;
     }
 
-//    ANNOTATE
+    @ManyToOne
+    @JoinColumn(name="owner_id", nullable = false)
     public Owner getOwner() {
         return owner;
     }
