@@ -23,7 +23,9 @@ public class Runner {
         file1.setName("dried-donuts");
         DBHelper.update(file1);
 
-        DBHelper.delete(file1);
+        DBHelper.delete(file4);
+
+        File foundFile = DBHelper.findById(File.class, file1.getId());
 
     }
 }
