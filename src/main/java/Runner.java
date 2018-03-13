@@ -20,5 +20,8 @@ public class Runner {
         File file4 = new File("stew-making-competition", ".wav", 1, folder2);
         DBHelper.save(file4);
 
+        file1.setName("dried-donuts");
+        DBHelper.update(file1);
+
     }
 }
