@@ -1,15 +1,18 @@
 package db;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class DBHelper {
 
     private static Transaction transaction;
     private static Session session;
 
-//    save
+
     public static void save(Object object){
         session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -24,7 +27,7 @@ public class DBHelper {
         }
     }
 
-//    update
+
     public static void update(Object object){
         session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -53,9 +56,29 @@ public class DBHelper {
         }
     }
 
-//    delete object
-
 //    find by id
+//    public static <T> T findById(int id){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        T result =
+//    }
 
 //    files by folder
+
+//    return list
+    public static <T> List<T> returnList(Criteria cr){
+        List<T> results = null;
+        try {
+            transaction = session.beginTransaction();
+            results = cr.list();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return results;
+    }
+
+
 }
