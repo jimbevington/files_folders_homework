@@ -2,6 +2,8 @@ import db.DBHelper;
 import models.File;
 import models.Folder;
 
+import java.util.List;
+
 public class Runner {
 
     public static void main(String[] args) {
@@ -26,6 +28,8 @@ public class Runner {
         DBHelper.delete(file4);
 
         File foundFile = DBHelper.findById(File.class, file1.getId());
+
+        List<File> fileFromFolder = DBHelper.getFilesByFolder(folder1);
 
     }
 }

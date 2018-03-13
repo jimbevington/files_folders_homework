@@ -1,5 +1,7 @@
 package db;
 
+import models.File;
+import models.Folder;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -57,6 +59,8 @@ public class DBHelper {
         }
     }
 
+//    get all
+
 //    find by id
     public static <T> T findById(Class classType, int id){
         session = HibernateUtil.getSessionFactory().openSession();
@@ -68,6 +72,14 @@ public class DBHelper {
     }
 
 //    files by folder
+    public static List<File> getFilesByFolder(Folder folder){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<File> results = null;
+        Criteria cr = session.createCriteria(File.class);
+        cr.add(Restrictions.eq("folder", folder));
+        results = returnList(cr);
+        return results;
+    }
 
 //    return list
     public static <T> List<T> returnList(Criteria cr){
