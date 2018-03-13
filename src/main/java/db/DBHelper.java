@@ -80,5 +80,19 @@ public class DBHelper {
         return results;
     }
 
+    public static <T> T returnUniqueItem(Criteria cr){
+        T result = null;
+        try {
+            transaction = session.beginTransaction();
+            result = (T)cr.uniqueResult();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return result;
+    }
 
 }
