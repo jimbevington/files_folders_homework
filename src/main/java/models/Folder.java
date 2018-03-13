@@ -7,6 +7,9 @@ public class Folder {
     private String name;
     private Set<File> files;
 
+    public Folder() {
+    }
+
     public Folder(String name) {
         this.name = name;
     }
