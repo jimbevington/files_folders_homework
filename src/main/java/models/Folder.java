@@ -10,6 +10,7 @@ public class Folder {
     private int id;
     private String name;
     private Set<File> files;
+    private Owner owner;
 
     public Folder() {
     }
@@ -45,5 +46,14 @@ public class Folder {
 
     public void setFiles(Set<File> files) {
         this.files = files;
+    }
+
+//    ANNOTATE
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }
