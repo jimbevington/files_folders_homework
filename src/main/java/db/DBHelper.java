@@ -60,8 +60,14 @@ public class DBHelper {
     }
 
 //    get all
+    public static <T> List<T> getAll(Class classType){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> results = null;
+        Criteria cr = session.createCriteria(classType);
+        results = returnList(cr);
+        return results;
+    }
 
-//    find by id
     public static <T> T findById(Class classType, int id){
         session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
@@ -71,7 +77,6 @@ public class DBHelper {
         return result;
     }
 
-//    files by folder
     public static List<File> getFilesByFolder(Folder folder){
         session = HibernateUtil.getSessionFactory().openSession();
         List<File> results = null;

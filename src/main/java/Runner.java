@@ -31,5 +31,8 @@ public class Runner {
 
         List<File> fileFromFolder = DBHelper.getFilesByFolder(folder1);
 
+        List<File> allFiles = DBHelper.getAll(File.class);
+        List<Folder> allFolders = DBHelper.getAll(Folder.class);
+
     }
 }
