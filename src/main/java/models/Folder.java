@@ -38,7 +38,7 @@ public class Folder {
         this.name = name;
     }
 
-//    add One to Many here
+    @OneToMany(mappedBy = "folder", fetch = FetchType.EAGER)
     public Set<File> getFiles() {
         return files;
     }
